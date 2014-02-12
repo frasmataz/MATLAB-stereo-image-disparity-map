@@ -27,16 +27,10 @@ function [ dispmap ] = disparitymap( )
             for k = 1 : windowSize - sampleSize
                 for l = 1 : windowSize - sampleSize
                     sampleB = window(k:k+sampleSize , l:l+sampleSize);
-                    
-                    if sampleA == sampleB
-                        dispmap((i-sampleSize/2),(j-sampleSize/2)) = 0;
-                    else
-                        dispmap((i-sampleSize/2),(j-sampleSize/2)) = 255;
                 end
             end
         end
     end
-    imshow(dispmap);
 end
 
     
