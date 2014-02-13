@@ -26,7 +26,7 @@ for i = (sampleSize/2)+1 : (size(imageA,1)-sampleSize/2) %LOOP THROUGH EACH PIXE
         
         max_x = 0;
         max_y = 0;
-        maxSSD = 255;
+        maxSSD = 0;
         
         for k = 1 : windowSize - sampleSize
             for l = 1 : windowSize - sampleSize
@@ -40,7 +40,7 @@ for i = (sampleSize/2)+1 : (size(imageA,1)-sampleSize/2) %LOOP THROUGH EACH PIXE
                     end
                 end
                 
-                if ssd<maxSSD
+                if ssd>maxSSD
                     maxSSD = ssd;
                     max_x = k;
                     max_y = l;
@@ -48,6 +48,6 @@ for i = (sampleSize/2)+1 : (size(imageA,1)-sampleSize/2) %LOOP THROUGH EACH PIXE
             end
         end
         
-        dispmap(i-(sampleSize/2),j-(sampleSize/2)) = max_x + max_y;
+        diffx = max_X
     end
 end
