@@ -1,0 +1,20 @@
+leftImage = imread('C:\Users\Fraser\Desktop\scene_l.bmp');
+rightImage = imread('C:\Users\Fraser\Desktop\scene_r.bmp');
+
+leftImage = mean(leftImage, 3);
+rightImage = mean(rightImage, 3);
+
+leftsmall = imread('C:\Users\Fraser\Desktop\scene_l_small.bmp');
+rightsmall = imread('C:\Users\Fraser\Desktop\scene_r_small.bmp');
+
+worsemap = 
+
+badmap = disparity2reloaded(leftsmall, rightsmall);
+a = max(max(badmap));
+
+dispmap = dispmap3ThisTimeItsPersonal(leftImage, rightImage);
+a = max(max(dispmap));
+
+waitfor(imshow(leftImage,[0,255]));
+waitfor(imshow(badmap,[0,a]));
+imshow(dispmap,[0,a]);

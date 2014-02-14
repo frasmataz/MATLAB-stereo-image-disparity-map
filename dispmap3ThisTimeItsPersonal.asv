@@ -1,12 +1,12 @@
-function [ output_args ] = dispmap3ThisTimeItsPersonal( input_args )
+function [ dispmap ] = dispmap3ThisTimeItsPersonal( leftI, rightI )
 %DISPMAP3THISTIMEITSPERSONAL Summary of this function goes here
 %   Detailed explanation goes here
 
-left = imread('C:\Users\Fraser\Desktop\right.png');
-right = imread('C:\Users\Fraser\Desktop\left.png');
+%right = imread('C:\Users\Fraser\Desktop\pentagon_right.bmp');
+%left = imread('C:\Users\Fraser\Desktop\pentagon_left.bmp');
 
-leftI = mean(left,3);
-rightI = mean(right,3);
+%leftI = mean(left,3);
+%rightI = mean(right,3);
 
 dispmap = zeros(size(leftI),'single');
 
@@ -25,9 +25,9 @@ for m = 1:h
       minc = max(1, n-halfSampleSize);
       maxc = min(w, n+halfSampleSize);
       
-      %mind = max(-windowSize, 1-minc);
-      mind=0;
-      maxd = max(windowSize, w-maxc);
+      mind = max(-windowSize, 1-minc);
+      %mind=0;
+      maxd = min(windowSize, w-maxc);
       
       sampleA = rightI(minr:maxr , minc:maxc);
       numBlocks = maxd - mind + 1;
@@ -55,7 +55,7 @@ for m = 1:h
    end
 end
 
-imshow(dispmap);
+%imshow(dispmap);
 
 end
 

@@ -1,13 +1,13 @@
-function [ dispmap ] = disparitymap( )
+function [ dispmap ] = disparitymap( imageA, imageB )
 %DISPARITYMAP Summary of this function goes here
 %   Detailed explanation goes here
-sampleSize = 5;
-windowSize = 40;
+sampleSize = 4;
+windowSize = 8;
 
-imageA = imread('C:\Users\Fraser\Desktop\leftsmall.bmp');
+%imageA = imread('C:\Users\Fraser\Desktop\leftsmall.bmp');
 imageA = padarray(imageA, [round(sampleSize/2),round(sampleSize/2)]);
 
-imageB = imread('C:\Users\Fraser\Desktop\rightsmall.bmp');
+%imageB = imread('C:\Users\Fraser\Desktop\rightsmall.bmp');
 imageB = padarray(imageB, [round(windowSize/2),round(windowSize/2)]);
 
 dispmap = zeros(size(imageA, 1), size(imageA, 2));

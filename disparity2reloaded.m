@@ -1,11 +1,8 @@
-function [ disp ] = disparity2reloaded( input_args )
+function [ disp ] = disparity2reloaded( imageA, imageB )
 %DISPARITY2RELOADED Summary of this function goes here
 %   Detailed explanation goes here
-    sampleSize = 16;
-    windowSize = 50;
-    
-    imageA = imread('C:\Users\Fraser\Desktop\leftsmall.bmp');
-    imageB = imread('C:\Users\Fraser\Desktop\rightsmall.bmp');
+    sampleSize = 4;
+    windowSize = 6;
 
     disp = zeros(size(imageA,1),size(imageA,2));
     
@@ -45,6 +42,6 @@ function [ disp ] = disparity2reloaded( input_args )
         end
     end
     
-    imshow(disp);
+    %imshow(disp);
 end
 
