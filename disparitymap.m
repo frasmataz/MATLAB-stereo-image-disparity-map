@@ -2,12 +2,12 @@ function [ dispmap ] = disparitymap( )
 %DISPARITYMAP Summary of this function goes here
 %   Detailed explanation goes here
 sampleSize = 5;
-windowSize = 10;
+windowSize = 40;
 
-imageA = imread('C:\Users\Fraser\Desktop\pentagon_left.bmp');
+imageA = imread('C:\Users\Fraser\Desktop\leftsmall.bmp');
 imageA = padarray(imageA, [round(sampleSize/2),round(sampleSize/2)]);
 
-imageB = imread('C:\Users\Fraser\Desktop\pentagon_right.bmp');
+imageB = imread('C:\Users\Fraser\Desktop\rightsmall.bmp');
 imageB = padarray(imageB, [round(windowSize/2),round(windowSize/2)]);
 
 dispmap = zeros(size(imageA, 1), size(imageA, 2));
@@ -26,7 +26,7 @@ for i = (sampleSize/2)+1 : (size(imageA,1)-sampleSize/2) %LOOP THROUGH EACH PIXE
         
         max_x = 0;
         max_y = 0;
-        maxSSD = 255;
+        maxSSD = 0;
         
         for k = 1 : windowSize - sampleSize
             for l = 1 : windowSize - sampleSize
@@ -34,13 +34,9 @@ for i = (sampleSize/2)+1 : (size(imageA,1)-sampleSize/2) %LOOP THROUGH EACH PIXE
                 
                 ssd = 0;
                 
-                for m = 1:sampleSize;
-                    for n = 1:sampleSize;
-                        ssd = ssd + ((sampleA(m,n) - sampleB(m,n))^2);
-                    end
-                end
+                ssd = sum(sum(abs(sampleA-sampleB)));
                 
-                if ssd<maxSSD
+                if ssd>maxSSD
                     maxSSD = ssd;
                     max_x = k;
                     max_y = l;
@@ -48,6 +44,6 @@ for i = (sampleSize/2)+1 : (size(imageA,1)-sampleSize/2) %LOOP THROUGH EACH PIXE
             end
         end
         
-        dispmap(i-(sampleSize/2),j-(sampleSize/2)) = max_x + max_y;
+        dispmap(i-(sampleSize/2),j-(sampleSize/2)) = max_x +max_y;
     end
 end
